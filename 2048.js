@@ -1,5 +1,4 @@
-// let bigArr = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-let bigArr = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [0, 0, 0, 0]];
+let bigArr = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
 
 const transfromArr = arr => {
   //đảo mảng chiều ngang sang mảng chiều dọc
@@ -42,7 +41,6 @@ const compareArr = (array1, array2) => {
   });
 };
 
-
 // =================================================================KEY DOWN===================================================================
 
 const pushLeft = arr => {
@@ -63,10 +61,10 @@ const pushLeft = arr => {
     } //
     return newArr;
   });
-  lose(pushedArr);
   if (compareArr(pushedArr, arr)) {
     return arr;
   } else {
+    // lose(addRamdom(pushedArr));
     return (bigArr = addRamdom(pushedArr));
   }
 };
@@ -113,15 +111,8 @@ const win = number => {
 };
 
 const lose = arr => {
-    const check = arr.every(childArr => {
-        return childArr.every(e => {
-            return e != 0;
-        })
-    })
-    if(check == true){
-        stopGame("LOSE");
-    }
-}
+  
+};
 
 const reset = () => {
   document.querySelector("#result").innerHTML = "";
@@ -130,27 +121,27 @@ const reset = () => {
 };
 
 const stopGame = status => {
-    const result = document.querySelector("#result");
-    const p = document.createElement("p");
-    const button = document.createElement("button");
-    p.innerHTML = status;
-    button.innerHTML = "RESET";
-    button.addEventListener("click", () => {
-      reset();
-    });
-    result.appendChild(p);
-    result.appendChild(button);
-    document.onkeydown = e => {
-      if (
-        e.keyCode == 37 ||
-        e.keyCode == 38 ||
-        e.keyCode == 39 ||
-        e.keyCode == 40
-      ) {
-      }
-    };
-    return false;
-}
+  const result = document.querySelector("#result");
+  const p = document.createElement("p");
+  const button = document.createElement("button");
+  p.innerHTML = status;
+  button.innerHTML = "RESET";
+  button.addEventListener("click", () => {
+    reset();
+  });
+  result.appendChild(p);
+  result.appendChild(button);
+  document.onkeydown = e => {
+    if (
+      e.keyCode == 37 ||
+      e.keyCode == 38 ||
+      e.keyCode == 39 ||
+      e.keyCode == 40
+    ) {
+    }
+  };
+  return false;
+};
 
 const startGame = () => {
   addRamdom(bigArr);
